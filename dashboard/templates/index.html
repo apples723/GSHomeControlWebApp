@@ -1,0 +1,119 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>GS Home Control</title>
+        <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- add my stylesheet -->
+		<link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    
+    
+    <div class="page-container">
+  
+	<!-- top navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    	<div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">Grant's Apartment Control</a>
+    	</div>
+    </nav>
+      
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+        <!--sidebar-->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div data-spy="affix" data-offset-top="45" data-offset-bottom="90">
+            <ul class="nav" id="sidebar-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="">Other links I might add later....</a></li>
+              
+              
+            </ul>
+           </div>
+        </div><!--/sidebar-->
+  	
+        <!--/main-->
+        <div class="col-xs-12 col-sm-9" data-spy="scroll" data-target="#sidebar-nav">
+          <div class="row">
+           	 <div class="col-sm-9">
+                <div class="panel panel-default">
+                   <div class="panel-heading"><h4>Grant's Appartment Home Control Dashboard</h4></div>
+                    <div class="panel-body">
+						
+						<h2>Smart Outlets</h2>
+						<table class="table">
+						<thead>
+						<tr>
+							<th>Device Name</th>
+							<th>Status</th>
+							<th>Options</th>
+						</tr>
+						</thead>
+						<tbody>
+								<tr>
+								<td>{{name1}}</td>
+								<td>{{status1}}</td>
+								<td><a href="/turnon?id={{ id1 }}">Turn On</a>/<a href="/turnoff?id={{ id1 }}">Turn Off</a></td>
+								</tr>
+								<tr>
+								<td>{{name2}}</td>
+								<td>{{status2}}</td>
+								<td><a href="/turnon?id={{ id2 }}">Turn On</a>/<a href="/turnoff?id={{ id2}}">Turn Off</a></td>
+								</tr>
+						</tbody>
+						</table>
+						<h2>Hue Lights</h2>
+		
+						<table class="table">
+						<thead>
+						<tr>
+							<th>Light Name</th>
+							<th>Status</th> 
+							<th>Brightness</th>
+							<th>Options</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for light in lights.values %}
+								<tr>
+								<td><p>{{light.name}}</p> </td>
+								<td>{{light.state}}</td>
+								<td>{{light.bri}}</td>
+								<td><a href="/turnonhue?id={{light.id}}">Turn On</a>/<a href="/turnoffhue?id={{light.id}}">Turn Off</a></td>
+								</tr>
+						{% endfor %}
+						</tbody>
+						</table>
+		
+		
+						<div class="clearfix"></div>
+					 
+					  <hr>
+                 
+                    </div><!--/panel-body-->
+                 </div><!--/panel-->            
+              </div><!--/col-->
+          </div><!--/row-->
+    </div>
+  </div><!--/.container-->
+</div><!--/.page-container-->
+  
+<footer><!--footer-->
+	<center><h4>&copy; 2017 <a href="http://grantsiders.com">Grant Siders</a></h4></center>
+</footer>
+		   </body>
+</html>
