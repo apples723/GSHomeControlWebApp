@@ -3,7 +3,7 @@ backports.shutil-get-terminal-size==1.0.0
 BeautifulSoup==3.2.1
 boto3==1.4.3
 botocore==1.4.91
-certifi==2017.11.5
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.3.7
 configparser==3.5.0
